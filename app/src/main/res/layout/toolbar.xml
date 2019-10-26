@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="@color/toolbarcolor">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/menubutton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:scaleType="fitXY"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_menu" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="@color/fontcol"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

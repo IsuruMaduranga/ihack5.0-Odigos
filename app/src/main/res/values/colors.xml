@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9970E2</color>
+    <color name="colorPrimaryDark">#673AB7</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="fontcol">#FFFFFF</color>
+    <color name="fontcol_dark">#74B1BB</color>
+    <color name="backgroundcolor">#ffffff</color>
+    <color name="toolbarcolor">#363636</color>
+    <color name="onlinecolor">#8BC34A</color>
+    <color name="offlinecolor">#FF5722</color>
+
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:padding="4dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/usercard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivuser"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="5dp"
+                android:scaleType="fitCenter" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/tvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="5dp"
+                android:text="Full Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4277bc"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvlocname"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="3dp"
+                android:text="Phone No"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#96b1ba"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
