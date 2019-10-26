@@ -86,6 +86,8 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
+    /* Select navigation item*/
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -115,6 +117,8 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
+    /* request user permission*/
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
@@ -128,6 +132,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /* enable user location */
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -145,6 +150,8 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
+    /* enable user map*/
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;

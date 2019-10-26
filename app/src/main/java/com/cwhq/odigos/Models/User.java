@@ -2,6 +2,8 @@ package com.cwhq.odigos.Models;
 
 public class User {
 
+    /* user attributes */
+
     private String userID;
     private String name;
     private String email;

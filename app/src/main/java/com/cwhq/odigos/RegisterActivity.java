@@ -134,6 +134,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /* validate user inputs */
+
     public void validate(){
 
         boolean Valid=true;
@@ -202,6 +204,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+
+    /* clear input fields*/
+
     public void clearFields(){
         etname.setText("");
         etemail.setText("");
@@ -210,6 +215,10 @@ public class RegisterActivity extends AppCompatActivity {
         tvgendererr.setText("");
         etpassword.setText("");
     }
+
+
+
+    /* add user to the real time database */
 
     public void createUser(){
 

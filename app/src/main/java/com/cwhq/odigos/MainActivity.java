@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /* get user from the firebase database */
+
     public void getThisUser(){
 
         DocumentReference userRef = fireDb.collection("users").document(UID);

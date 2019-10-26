@@ -106,6 +106,9 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     }
 
+
+    /* added navigation item selected */
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -149,6 +152,8 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
     }
 
 
+    /* check location changes */
+
     public void onLocationChanged(Location location) {
         // Called when a new location is found by the network location provider.
         Log.d(TAG,"Location changed, " + location.getAccuracy() + " , " + location.getLatitude()+ "," + location.getLongitude());
@@ -184,6 +189,8 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
         }
     }
 
+
+    /* location enable function */
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -202,6 +209,8 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
         }
     }
 
+
+    /* google map add function */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
