@@ -27,9 +27,12 @@ public class User {
 
     /* add getters setters */
 
-    public String getUserID() {return this.userID;}
+    public String getUserID() {
+        return this.userID;
+    }
 
     public void setUserID(String userID) {
+
         this.userID = userID;
     }
 
@@ -38,11 +41,13 @@ public class User {
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public String getEmail() {
-        return email;
+
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -50,42 +55,52 @@ public class User {
     }
 
     public String getPhone() {
-        return phone;
+
+        return this.phone;
     }
 
     public void setPhone(String phone) {
+
         this.phone = phone;
     }
 
     public String getType() {
+
         return type;
     }
 
     public void setType(String type) {
+
         this.type = type;
     }
 
     public String getGender() {
+
         return this.gender;
     }
 
     public void setGender(String gender) {
+
         this.gender = gender;
     }
 
     public String getImageLink() {
+
         return this.imageLink;
     }
 
     public void setImageLink(String imageLink) {
+
         this.imageLink = imageLink;
     }
 
     public String getUserLanguage() {
+
         return this.language;
     }
 
     public void setUserLanguage(String language) {
+
         this.language = language;
     }
 
