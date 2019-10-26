@@ -13,6 +13,9 @@ public class User {
     private String imageLink;
     private String language;
 
+    public User() {
+
+    }
 
     public User(String id, String name, String email, String phone, String type, String gender, String imageLink, String language) {
         this.userID = id;
