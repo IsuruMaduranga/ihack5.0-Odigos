@@ -11,9 +11,6 @@ public class User {
     private String imageLink;
     private String language;
 
-    public  User(){
-
-    }
 
     public User(String id, String name, String email, String phone, String type, String gender, String imageLink, String language) {
         this.userID = id;
@@ -26,16 +23,16 @@ public class User {
         this.language = language;
     }
 
-    public String getUserID() {
-        return userID;
-    }
+    /* add getters setters */
+
+    public String getUserID() {return this.userID;}
 
     public void setUserID(String userID) {
         this.userID = userID;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -67,7 +64,7 @@ public class User {
     }
 
     public String getGender() {
-        return gender;
+        return this.gender;
     }
 
     public void setGender(String gender) {
@@ -75,7 +72,7 @@ public class User {
     }
 
     public String getImageLink() {
-        return imageLink;
+        return this.imageLink;
     }
 
     public void setImageLink(String imageLink) {
