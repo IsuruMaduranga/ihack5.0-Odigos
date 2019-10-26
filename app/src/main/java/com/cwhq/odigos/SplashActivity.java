@@ -16,6 +16,7 @@ public class SplashActivity extends AppCompatActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle icicle) {
+
         super.onCreate(icicle);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -34,9 +35,6 @@ public class SplashActivity extends AppCompatActivity {
                 SplashActivity.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
-
-
-
 
     }
 }

@@ -72,14 +72,17 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_guide);
 
+        // Get database instance
         fireDB = FirebaseFirestore.getInstance();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        // Add event listener to menu bar
         ImageView menubar = findViewById(R.id.menubutton);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -92,15 +95,14 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
             }
         });
 
+        // Add event listener to status
         statusText = (TextView) findViewById(R.id.statustext);
         status = (Switch) findViewById(R.id.status);
         mSnackbar = Snackbar.make(findViewById(R.id.guidelayout), "Press again to exit", Snackbar.LENGTH_SHORT);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_);
         mapFragment.getMapAsync(this);
 
-
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-
 
         status.setOnCheckedChangeListener(this);
 
@@ -111,6 +113,7 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -131,17 +134,18 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onBackPressed() {
+
         if (mSnackbar.isShown()) {
             finish();
         } else {
             mSnackbar.show();
         }
+
     }
-
-
 
     @Override
     public void onDestroy(){
+
         super.onDestroy();
         if(status.isChecked()) {
             status.setChecked(false);
@@ -149,16 +153,19 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
             statusText.setTextColor(ContextCompat.getColor(this, R.color.offlinecolor));
             updateOnlineStatus(false);
         }
+
     }
 
 
     /* check location changes */
 
     public void onLocationChanged(Location location) {
+
         // Called when a new location is found by the network location provider.
         Log.d(TAG,"Location changed, " + location.getAccuracy() + " , " + location.getLatitude()+ "," + location.getLongitude());
         UserLocation uLocation = new UserLocation(location.getLatitude(),location.getLongitude());
         MainActivity.CurrentUserLcoation = uLocation;
+
     }
 
     @Override
@@ -178,6 +185,7 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             if (permissions.length == 1 &&
                     permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
@@ -187,11 +195,13 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
                 // Permission was denied. Display an error message.
             }
         }
+
     }
 
 
     /* location enable function */
     private void enableMyLocation() {
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission to access the location is missing.
@@ -209,11 +219,11 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
         }
     }
 
-
     /* google map add function */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             getMyLocation();
@@ -239,10 +249,8 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
         return false;
     }
 
-
-
-
     public void getMyLocation(){
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mFusedLocationClient.getLastLocation()
@@ -269,19 +277,15 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     }
 
-
-
-
-
-
-
-
     public void moveCamera(LatLng latLng, int zoomSize){
+
         CameraUpdate location = CameraUpdateFactory.newLatLngZoom(latLng, zoomSize);
         mMap.animateCamera(location);
+
     }
 
     public Marker addMyMarker(LatLng latLng, String title){
+
         return mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title(title)
@@ -298,6 +302,7 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
         Log.d(TAG,isChecked?"Online":"Offline");
         if(isChecked) {
             statusText.setText("ONLINE");
@@ -309,9 +314,8 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
         updateOnlineStatus(isChecked);
     }
 
-
-
     public void updateOnlineStatus(Boolean isOnline){
+
          if(isOnline && MainActivity.CurrentUserLcoation!=null){
 
              DocumentReference onlineRef = fireDB.collection("online_guides").document(MainActivity.UID);
@@ -338,8 +342,5 @@ public class GuideActivity extends AppCompatActivity implements NavigationView.O
              fireDB.collection("online_guides").document(MainActivity.UID).delete();
          }
     }
-
-
-
 
 }

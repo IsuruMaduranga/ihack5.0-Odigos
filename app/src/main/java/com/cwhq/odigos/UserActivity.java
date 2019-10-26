@@ -61,6 +61,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -90,6 +91,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     /* Select navigation item*/
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -116,11 +118,10 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-
     /* request user permission*/
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             if (permissions.length == 1 &&
                     permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
@@ -134,6 +135,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
     /* enable user location */
     private void enableMyLocation() {
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission to access the location is missing.
@@ -155,6 +157,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             getMyLocation();
@@ -184,6 +187,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
     /* get current location */
     public void getMyLocation(){
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mFusedLocationClient.getLastLocation()
@@ -208,19 +212,14 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
-
-
-
-
-
-
     public void moveCamera(LatLng latLng, int zoomSize){
+
         CameraUpdate location = CameraUpdateFactory.newLatLngZoom(latLng, zoomSize);
         mMap.animateCamera(location);
     }
 
     public Marker addMyMarker(LatLng latLng, String title){
+
         return mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title(title)

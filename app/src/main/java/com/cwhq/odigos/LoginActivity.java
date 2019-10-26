@@ -29,9 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-
     public static String UID = "";
-
 
     private EditText etmail;
     private EditText etpassword;
@@ -41,11 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
     private ProgressBar pbr;
     private FirebaseAuth mAuth;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_FINE_LOCATION},1);
 
         }
-
-
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,12 +130,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-
-
-
-
-
 
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

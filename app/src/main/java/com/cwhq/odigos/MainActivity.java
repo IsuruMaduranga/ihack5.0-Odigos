@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Get database access
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fireDb = FirebaseFirestore.getInstance();
