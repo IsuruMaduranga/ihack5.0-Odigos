@@ -9,11 +9,13 @@ public class User {
     private String type;
     private String gender;
     private String imageLink;
+    private String language;
 
     public  User(){
+
     }
 
-    public User(String id, String name, String email, String phone, String type, String gender, String imageLink) {
+    public User(String id, String name, String email, String phone, String type, String gender, String imageLink, String language) {
         this.userID = id;
         this.name = name;
         this.email = email;
@@ -21,6 +23,7 @@ public class User {
         this.type = type;
         this.gender = gender;
         this.imageLink = imageLink;
+        this.language = language;
     }
 
     public String getUserID() {
@@ -78,4 +81,14 @@ public class User {
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
     }
+
+    public String getUserLanguage() {
+        return this.language;
+    }
+
+    public void setUserLanguage(String language) {
+        this.language = language;
+    }
+
+
 }

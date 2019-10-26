@@ -7,17 +7,22 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.cwhq.odigos.Models.User;
+
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -47,6 +52,9 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar pbr;
     private FirebaseAuth mAuth;
     private FirebaseFirestore fireDB;
+    private ArrayAdapter<String> adapter;
+    private String[] items;
+    private Spinner dropdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,12 @@ public class RegisterActivity extends AppCompatActivity {
         tverrpassword = (TextView)findViewById(R.id.tvpassworderr);
         btReg = (Button)findViewById(R.id.bReg);
         pbr =(ProgressBar)findViewById(R.id.pbrreg);
+        dropdown = findViewById(R.id.lang_spinner);
+
+
+        items = new String[]{"English", "Chinese"};
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
 
         mAuth = FirebaseAuth.getInstance();
         fireDB = FirebaseFirestore.getInstance();
@@ -121,6 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void validate(){
+
         boolean Valid=true;
         tverrname.setText("");
         tverrmail.setText("");
@@ -130,24 +145,31 @@ public class RegisterActivity extends AppCompatActivity {
         tverrpassword.setText("");
 
         if (name.equals("")){
+
             tverrname.setText("First Name is required field");
             etname.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
         }
         if (mail.equals("")){
+
             tverrmail.setText("Email is required field");
             etemail.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
+
         }else if(!mail.matches("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$")){
+
             tverrmail.setText("Invalid Email format");
             etemail.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
         }
         if (phone.equals("")){
+
             tverrphone.setText("Phone number is required field");
             etphoneno.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
+
         }else if(!phone.matches("^\\+(?:[0-9] ?){6,14}[0-9]$")){
+
             tverrphone.setText("Check phone number format. ex:+94123456789");
             etphoneno.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
@@ -163,16 +185,19 @@ public class RegisterActivity extends AppCompatActivity {
             Valid = false;
         }
         if (password.equals("")){
+
             tverrpassword.setText("PassWord is required field");
             etpassword.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
+
         }else if(password.length()<6){
+
             tverrpassword.setText("PassWord must contains at a least 6 letters");
             etpassword.setBackgroundResource(R.drawable.edittextred);
             Valid=false;
         }
         if (Valid){
-           createUser();
+            createUser();
         }
 
     }
@@ -187,6 +212,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createUser(){
+
         btReg.setVisibility(View.GONE);
         pbr.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(mail,password)
@@ -197,7 +223,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             //Account created.. Need to store additional data
 
-                            User user = new User(FirebaseAuth.getInstance().getCurrentUser().getUid(),name,mail,phone,type,gender,"");
+                            User user = new User(FirebaseAuth.getInstance().getCurrentUser().getUid(),name,mail,phone,type,gender,null,"");
 
                             DocumentReference userRef = fireDB.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             userRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
