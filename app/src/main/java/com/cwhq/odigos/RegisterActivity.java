@@ -284,8 +284,8 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
     }
-
-    // Method for display toast message
+    
+    /* show msg to user */
     public void showMsg(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }

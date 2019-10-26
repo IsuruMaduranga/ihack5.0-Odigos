@@ -182,7 +182,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
+    /* get current location */
     public void getMyLocation(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
